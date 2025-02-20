@@ -1,4 +1,5 @@
 import { sql } from "drizzle-orm";
+import { boolean } from "drizzle-orm/mysql-core";
 import { int, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
 
 export const positionTable = sqliteTable(
@@ -6,7 +7,7 @@ export const positionTable = sqliteTable(
   {
     id: int().primaryKey({ autoIncrement: true }),
     name: text().notNull(),
-    description: text().notNull(),
+    parentId: int().notNull().default(0),
     createdAt: text()
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
@@ -14,6 +15,7 @@ export const positionTable = sqliteTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
   },
+  
 );
 
 export type User = typeof positionTable.$inferSelect;

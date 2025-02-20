@@ -22,8 +22,8 @@ positionsRoute.get("/:id", async (c) => {
 
 // Create a position
 positionsRoute.post("/", async (c) => {
-  const { name, description } = await c.req.json();
-  const newPositionResp = await db.insert(positionTable).values({ name, description });
+  const { name, parentId } = await c.req.json();
+  const newPositionResp = await db.insert(positionTable).values({ name, parentId });
   return c.json(newPositionResp);
 });
 

@@ -1,7 +1,7 @@
 CREATE TABLE `positions` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`name` text NOT NULL,
-	`description` text NOT NULL,
+	`parentId` integer DEFAULT 0 NOT NULL,
 	`createdAt` text DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	`updatedAt` text DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
